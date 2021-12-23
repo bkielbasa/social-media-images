@@ -30,7 +30,7 @@ func (lr Font) fontSize() float64 {
 	return 40
 }
 
-func imgLabel(w http.ResponseWriter, r *http.Request) {
+func blogPost(w http.ResponseWriter, r *http.Request) {
 	req := labelRequest{}
 
 	body, err := io.ReadAll(r.Body)

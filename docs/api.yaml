@@ -1,0 +1,47 @@
+openapi: 3.0.1
+info:
+  title: ApiGateway
+  version: 1.0.0
+servers:
+- url: https://imgs.developer20.com/
+- url: http://imgs.developer20.com/
+paths:
+  /blog-post:
+    post:
+      summary: Create a new configuration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BlogPostImgRequest'
+        required: true
+      responses:
+        200:
+          description: the configuration is added
+          content: {}
+        405:
+          description: Invalid input
+          content: {}
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    BlogPostImgRequest:
+      required:
+      - baseImg
+      - title
+      type: object
+      properties:
+        title:
+          type: string
+          description: The title of the blog post
+        baseImg:
+          type: string
+          description: The base/background image of the new image
+        font:
+          $ref: '#/components/schemas/Font'
+    Font:
+      type: object
+      properties:
+        size:
+          type: string
+          default: "40"
